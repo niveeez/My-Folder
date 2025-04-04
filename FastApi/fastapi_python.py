@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from enum import Enum
+import uvicorn
 
 app = FastAPI()
 
@@ -39,3 +40,7 @@ async def hello(name):
 @app.get('/get_items/{cuisine}')
 async def get_items(cuisine:AvailableCuisines):
     return food_items.get(cuisine)
+
+if __name__ == '__main__':
+    uvicorn.run(app, host='0.0.0.0', port=8000)
+
